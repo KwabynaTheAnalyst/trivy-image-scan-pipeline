@@ -1,21 +1,30 @@
-name: sast-scan
+name: SAST Scan (Semgrep)
 
-on: push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   semgrep:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Run Semgrep
         uses: returntocorp/semgrep-action@v1
         with:
-          config: p/ci
+          config: p/python
           generateSarif: true
+        env:
+          SEMGREP_APP_TOKEN: ""
 
-      - name: Upload Results
+      - name: Upload Semgrep report
         uses: actions/upload-artifact@v4
         with:
           name: semgrep-report
           path: semgrep.sarif
+          retention-days: 7
