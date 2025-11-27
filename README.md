@@ -77,7 +77,7 @@ flowchart TD
     A[Code Push or Pull Request] --> B[GitHub Actions Workflow Starts]
 
     B --> C[Build Docker Image]
-    C --> D[Trivy Image Scan (JSON)]
+    C --> D[Trivy Image Scan JSON]
 
     D --> E{High + Critical > Threshold?}
     E -->|Yes| F[Fail Pipeline]
