@@ -61,14 +61,10 @@ README.md
    Trivy scans the image and produces a JSON report.
 
 3. Gating Phase  
-   The workflow counts High and Critical findings and fails if the threshold is exceeded.
+   The workflow counts High and Critical findings and fails if the threshold is exceeded.  
+   The JSON report is converted to HTML and uploaded as an artifact.  
+   This prevents vulnerable images from advancing further through the pipeline.
 
-
-The pipeline fails if the count exceeds the configured threshold.
-
-The JSON report is converted to HTML and uploaded as an artifact.
-
-This represents a simple CI control that prevents vulnerable images from advancing through the build pipeline.
 
 ## CI Workflow Diagram
 ```mermaid
@@ -93,9 +89,7 @@ flowchart TD
     K --> I
 
     G --> L[Ready for Deployment]
-    ```
-
-    
+```
 
 ## Testing the Vulnerability Gate
 
@@ -133,31 +127,20 @@ These scenarios demonstrate how the severity gate is used to enforce security ex
 - Job fails during gating
 - HTML report shows the triggering finding
 
-These examples show how the gate helps prevent unsafe images from proceeding further into a CI/CD pipeline.
 
 ## Optional: SBOM and SAST Workflows
-
-In addition to image scanning, this repository includes optional workflows for SBOM generation and static analysis. These jobs produce artifacts that support supply chain visibility and code review, without blocking the main build.
-
 ### SBOM Generation (Syft)
-
-The SBOM workflow uses Syft to generate an SPDX JSON SBOM from the repository source and uploads it as an artifact. This job provides an inventory of components that can be used for vulnerability management and compliance documentation.
+Generates an SPDX JSON SBOM and uploads it as an artifact.
 
 ### SAST Scan (Semgrep)
-
-The SAST workflow runs Semgrep against the Python application and saves a SARIF report. The job is configured as non-blocking so that findings are recorded but do not fail the pipeline.  This job demonstrates static analysis integration in CI and produces artifacts that can be viewed in supporting tools or used during reviews.
+Runs Semgrep against the Python code and produces a SARIF report (non-blocking).
 
 ## Why This Project Matters
-
-This workflow supports:
-
 - Early detection of known vulnerabilities
 - Enforcement of risk tolerance before deployment
 - Improved visibility into image components
 - Practical application of supply chain security controls
 - Simple integration with CI processes
-
-It reinforces the ability to secure containerized workloads using common DevSecOps practices.
 
 ## RMF Control Mapping
 
